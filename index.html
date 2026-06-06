@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Pergunta importante 👀</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      width:100vw;
+      height:100vh;
+      overflow:hidden;
+
+      background:#ffb6c1;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      cursor:none;
+
+      position:relative;
+    }
+
+    .container{
+      width:100%;
+      height:100%;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+
+      text-align:center;
+      position:relative;
+    }
+
+    h1{
+      color:white;
+      font-size:42px;
+
+      margin-bottom:70px;
+
+      text-shadow:2px 2px 10px rgba(0,0,0,0.2);
+
+      padding:0 20px;
+    }
+
+    /* Área dos botões */
+    .buttons{
+
+      position:relative;
+
+      width:1000px;
+      height:220px;
+
+      display:flex;
+
+      justify-content:center;
+
+      align-items:center;
+
+      gap:250px;
+    }
+
+    button{
+
+      border:none;
+
+      padding:25px 70px;
+
+      font-size:32px;
+      font-weight:bold;
+
+      border-radius:18px;
+
+      cursor:none;
+
+      transition:
+        left 0.15s ease,
+        top 0.15s ease,
+        transform 0.15s ease;
+
+      box-shadow:0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    #yesBtn{
+      background:#4CAF50;
+      color:white;
+    }
+
+    #yesBtn:hover{
+      transform:scale(1.08);
+    }
+
+    #noBtn{
+      background:#ff4d4d;
+      color:white;
+
+      position:absolute;
+
+      transform-origin:center;
+    }
+
+    /* Cursor fake */
+    .fake-cursor{
+
+      width:18px;
+      height:18px;
+
+      border-radius:50%;
+
+      background:white;
+      border:2px solid #ff69b4;
+
+      position:fixed;
+
+      pointer-events:none;
+
+      z-index:99999;
+
+      transform:translate(-50%, -50%);
+
+      box-shadow:0 0 10px rgba(255,255,255,0.8);
+    }
+
+    /* Elementos flutuando */
+    .happy{
+      position:absolute;
+
+      animation:float 5s linear forwards;
+
+      opacity:0.95;
+
+      pointer-events:none;
+    }
+
+    @keyframes float{
+
+      from{
+        transform:
+          translateY(100vh)
+          rotate(0deg);
+
+        opacity:0;
+      }
+
+      10%{
+        opacity:1;
+      }
+
+      to{
+        transform:
+          translateY(-150px)
+          rotate(25deg);
+
+        opacity:0;
+      }
+    }
+
+    /* Tela final */
+    .success-screen{
+      display:none;
+
+      text-align:center;
+
+      color:white;
+
+      animation:appear 0.7s ease;
+
+      z-index:10;
+
+      padding:20px;
+    }
+
+    .success-screen h2{
+      font-size:68px;
+      margin-bottom:25px;
+
+      text-shadow:2px 2px 12px rgba(0,0,0,0.25);
+    }
+
+    .success-screen p{
+      font-size:32px;
+
+      text-shadow:2px 2px 8px rgba(0,0,0,0.2);
+    }
+
+    @keyframes appear{
+
+      from{
+        opacity:0;
+        transform:scale(0.8);
+      }
+
+      to{
+        opacity:1;
+        transform:scale(1);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Cursor fake -->
+  <div class="fake-cursor" id="fakeCursor"></div>
+
+  <!-- Tela principal -->
+  <div class="container" id="questionScreen">
+
+    <h1>
+      Você aceita sair comigo mais algumas vezes? 😄
+    </h1>
+
+    <div class="buttons">
+
+      <button id="yesBtn">
+        SIM
+      </button>
+
+      <button id="noBtn">
+        NÃO
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Tela final -->
+  <div class="success-screen" id="successScreen">
+
+    <h2>
+      🎉 Feliz Aniversário Pedrinha!! 🎉
+    </h2>
+
+    <p>
+      Que o seu dia seja cheio de alegria,
+      risadas e momentos incríveis 😄
+    </p>
+
+  </div>
+
+  <script>
+
+    const fakeCursor =
+      document.getElementById("fakeCursor");
+
+    const noBtn =
+      document.getElementById("noBtn");
+
+    const yesBtn =
+      document.getElementById("yesBtn");
+
+    const buttonsArea =
+      document.querySelector(".buttons");
+
+    // mouse real
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    // cursor fake
+    let fakeX = mouseX;
+    let fakeY = mouseY;
+
+    // escala botão NÃO
+    let noScale = 1;
+
+    // contador pulos
+    let jumpCount = 0;
+
+    // posição botão NÃO
+    let noX = 0;
+    let noY = 0;
+
+    // posiciona botão inicialmente
+    function posicionarBotaoInicial(){
+
+      const rect =
+        noBtn.getBoundingClientRect();
+
+      const areaRect =
+        buttonsArea.getBoundingClientRect();
+
+      noX =
+        (areaRect.width / 2) + 120;
+
+      noY =
+        (areaRect.height / 2) -
+        (rect.height / 2);
+
+      noBtn.style.left = noX + "px";
+      noBtn.style.top = noY + "px";
+    }
+
+    posicionarBotaoInicial();
+
+    // acompanha mouse
+    document.addEventListener("mousemove", (e) => {
+
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+    });
+
+    // cursor fake
+    function animateCursor(){
+
+      fakeX += (mouseX - fakeX) * 0.25;
+      fakeY += (mouseY - fakeY) * 0.25;
+
+      fakeCursor.style.left = fakeX + "px";
+      fakeCursor.style.top = fakeY + "px";
+
+      requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+    // botão NÃO fugindo
+    document.addEventListener("mousemove", () => {
+
+      const rect =
+        noBtn.getBoundingClientRect();
+
+      const centerX =
+        rect.left + rect.width / 2;
+
+      const centerY =
+        rect.top + rect.height / 2;
+
+      const distance = Math.hypot(
+        mouseX - centerX,
+        mouseY - centerY
+      );
+
+      // ativa fuga
+      if(distance < 170){
+
+        const areaRect =
+          buttonsArea.getBoundingClientRect();
+
+        // pequenos pulos
+        noX += (Math.random() - 0.5) * 180;
+        noY += (Math.random() - 0.5) * 120;
+
+        // limites
+        const minX = 20;
+        const minY = 20;
+
+        const maxX =
+          areaRect.width - rect.width - 20;
+
+        const maxY =
+          areaRect.height - rect.height - 20;
+
+        // mantém dentro da área
+        noX =
+          Math.max(minX, Math.min(noX, maxX));
+
+        noY =
+          Math.max(minY, Math.min(noY, maxY));
+
+        // aplica posição
+        noBtn.style.left = noX + "px";
+        noBtn.style.top = noY + "px";
+
+        // conta pulos
+        jumpCount++;
+
+        // diminui a cada 3 pulos
+        if(jumpCount % 3 === 0){
+
+          noScale -= 0.04;
+
+          // limite mínimo
+          if(noScale < 0.35){
+            noScale = 0.35;
+          }
+
+          noBtn.style.transform =
+            `scale(${noScale})`;
+        }
+
+      }
+
+    });
+
+    // clique no SIM
+    yesBtn.addEventListener("click", () => {
+
+      document.getElementById(
+        "questionScreen"
+      ).style.display = "none";
+
+      document.getElementById(
+        "successScreen"
+      ).style.display = "block";
+
+      criarAnimacaoFinal();
+
+    });
+
+    // animação final
+    function criarAnimacaoFinal(){
+
+      setInterval(() => {
+
+        const item =
+          document.createElement("div");
+
+        item.classList.add("happy");
+
+        // mistura balões + emojis
+        const elementos = [
+          "🎈",
+          "🎈",
+          "🎈",
+          "🎉",
+          "🎊",
+          "😄",
+          "😁",
+          "🥳",
+          "😊",
+          "😎"
+        ];
+
+        item.innerHTML =
+          elementos[
+            Math.floor(
+              Math.random() * elementos.length
+            )
+          ];
+
+        // posição aleatória
+        item.style.left =
+          Math.random() * window.innerWidth + "px";
+
+        // tamanho aleatório
+        item.style.fontSize =
+          (35 + Math.random() * 55) + "px";
+
+        // velocidade aleatória
+        item.style.animationDuration =
+          (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(item);
+
+        // remove depois
+        setTimeout(() => {
+          item.remove();
+        }, 8000);
+
+      }, 120);
+
+    }
+
+  </script>
+
+</body>
+</html>
