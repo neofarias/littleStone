@@ -21,7 +21,7 @@
       height:100vh;
       overflow:hidden;
 
-      background:#ffb6c1;
+      background:#1f4d3a;
 
       display:flex;
       align-items:center;
@@ -54,9 +54,12 @@
       text-shadow:2px 2px 10px rgba(0,0,0,0.2);
 
       padding:0 20px;
+
+      max-width:1200px;
+
+      line-height:1.4;
     }
 
-    /* Área dos botões */
     .buttons{
 
       position:relative;
@@ -94,16 +97,37 @@
       box-shadow:0 8px 25px rgba(0,0,0,0.2);
     }
 
-    #yesBtn{
+    #yesBtn,
+    #yesBtn2,
+    #yesBtn3,
+    #yesBtn4,
+    #yesBtn5,
+    #yesBtn6,
+    #yesBtn7,
+    #yesBtn8{
       background:#4CAF50;
       color:white;
     }
 
-    #yesBtn:hover{
+    #yesBtn:hover,
+    #yesBtn2:hover,
+    #yesBtn3:hover,
+    #yesBtn4:hover,
+    #yesBtn5:hover,
+    #yesBtn6:hover,
+    #yesBtn7:hover,
+    #yesBtn8:hover{
       transform:scale(1.08);
     }
 
-    #noBtn{
+    #noBtn,
+    #noBtn2,
+    #noBtn3,
+    #noBtn4,
+    #noBtn5,
+    #noBtn6,
+    #noBtn7,
+    #noBtn8{
       background:#ff4d4d;
       color:white;
 
@@ -112,7 +136,6 @@
       transform-origin:center;
     }
 
-    /* Cursor fake */
     .fake-cursor{
 
       width:18px;
@@ -134,7 +157,6 @@
       box-shadow:0 0 10px rgba(255,255,255,0.8);
     }
 
-    /* Elementos flutuando */
     .happy{
       position:absolute;
 
@@ -168,7 +190,6 @@
       }
     }
 
-    /* Tela final */
     .success-screen{
       display:none;
 
@@ -181,6 +202,8 @@
       z-index:10;
 
       padding:20px;
+
+      max-width:1200px;
     }
 
     .success-screen h2{
@@ -188,12 +211,16 @@
       margin-bottom:25px;
 
       text-shadow:2px 2px 12px rgba(0,0,0,0.25);
+
+      line-height:1.3;
     }
 
     .success-screen p{
       font-size:32px;
 
       text-shadow:2px 2px 8px rgba(0,0,0,0.2);
+
+      line-height:1.6;
     }
 
     @keyframes appear{
@@ -214,10 +241,9 @@
 
 <body>
 
-  <!-- Cursor fake -->
   <div class="fake-cursor" id="fakeCursor"></div>
 
-  <!-- Tela principal -->
+  <!-- Pergunta 1 -->
   <div class="container" id="questionScreen">
 
     <h1>
@@ -225,20 +251,126 @@
     </h1>
 
     <div class="buttons">
-
-      <button id="yesBtn">
-        SIM
-      </button>
-
-      <button id="noBtn">
-        NÃO
-      </button>
-
+      <button id="yesBtn">SIM</button>
+      <button id="noBtn">NÃO</button>
     </div>
 
   </div>
 
-  <!-- Tela final -->
+  <!-- Pergunta 2 -->
+  <div class="container" id="questionScreen2" style="display:none;">
+
+    <h1>
+      Você aceita ficar mais algumas horas comigo
+      na nossa esquina? 😄
+    </h1>
+
+    <div class="buttons">
+      <button id="yesBtn2">SIM</button>
+      <button id="noBtn2">NÃO</button>
+    </div>
+
+  </div>
+
+  <!-- Pergunta 3 -->
+  <div class="container" id="questionScreen3" style="display:none;">
+
+    <h1>
+      Você aceita que eu apareça de surpresa
+      com Pizza Hut e Brownie para assistirmos
+      um filme juntos? 🍕🍿😄
+    </h1>
+
+    <div class="buttons">
+      <button id="yesBtn3">SIM</button>
+      <button id="noBtn3">NÃO</button>
+    </div>
+
+  </div>
+
+  <!-- Pergunta 4 -->
+  <div class="container" id="questionScreen4" style="display:none;">
+
+    <h1>
+      Você aceita o convite para comer
+      um churrasco de airfryer e muito
+      café especial na minha casa? ☕🥩😄
+    </h1>
+
+    <div class="buttons">
+      <button id="yesBtn4">SIM</button>
+      <button id="noBtn4">NÃO</button>
+    </div>
+
+  </div>
+
+  <!-- Pergunta 5 -->
+  <div class="container" id="questionScreen5" style="display:none;">
+
+    <h1>
+      Você aceita meu convite para
+      locais desconhecidos e caminhadas
+      sem rumo definido? 🚶☕🌎😄
+    </h1>
+
+    <div class="buttons">
+      <button id="yesBtn5">SIM</button>
+      <button id="noBtn5">NÃO</button>
+    </div>
+
+  </div>
+
+  <!-- Pergunta 6 -->
+  <div class="container" id="questionScreen6" style="display:none;">
+
+    <h1>
+      Você aceita que eu te faça surpresas
+      sem avisar como te buscar no trabalho
+      ou coisinhas assim? 😄✨
+    </h1>
+
+    <div class="buttons">
+      <button id="yesBtn6">SIM</button>
+      <button id="noBtn6">NÃO</button>
+    </div>
+
+  </div>
+
+  <!-- Pergunta 7 -->
+  <div class="container" id="questionScreen7" style="display:none;">
+
+    <h1>
+      Você aceita que eu lhe dê abraços
+      infinitos, mesmo você sendo muito
+      tímida? 🤗😄
+    </h1>
+
+    <div class="buttons">
+      <button id="yesBtn7">SIM</button>
+      <button id="noBtn7">NÃO</button>
+    </div>
+
+  </div>
+
+  <!-- Pergunta 8 -->
+  <div class="container" id="questionScreen8" style="display:none;">
+
+    <h1>
+      Você aceita que eu olhe bem no fundo
+      das tuas bolitas lindas e faça uma
+      leitura completa do tipo de
+      "Pensando Pensamentos" que você está
+      tendo naquele momento? 👀😄
+    </h1>
+
+    <div class="buttons">
+      <button id="yesBtn8">SIM</button>
+      <button id="noBtn8">NÃO</button>
+    </div>
+
+  </div>
+
+  <!-- Tela Final -->
   <div class="success-screen" id="successScreen">
 
     <h2>
@@ -246,8 +378,12 @@
     </h2>
 
     <p>
-      Que o seu dia seja cheio de alegria,
-      risadas e momentos incríveis 😄
+      Que o seu dia seja incrível, especial
+      e com bastante comida! 😄
+      Você é única e especial, a pedrinha
+      das bolitas lindas e do sorriso
+      encantador que me deixa com cara
+      de bobo sempre que lhe vejo...
     </p>
 
   </div>
@@ -257,56 +393,14 @@
     const fakeCursor =
       document.getElementById("fakeCursor");
 
-    const noBtn =
-      document.getElementById("noBtn");
+    const botoesFugitivos = [];
 
-    const yesBtn =
-      document.getElementById("yesBtn");
-
-    const buttonsArea =
-      document.querySelector(".buttons");
-
-    // mouse real
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
 
-    // cursor fake
     let fakeX = mouseX;
     let fakeY = mouseY;
 
-    // escala botão NÃO
-    let noScale = 1;
-
-    // contador pulos
-    let jumpCount = 0;
-
-    // posição botão NÃO
-    let noX = 0;
-    let noY = 0;
-
-    // posiciona botão inicialmente
-    function posicionarBotaoInicial(){
-
-      const rect =
-        noBtn.getBoundingClientRect();
-
-      const areaRect =
-        buttonsArea.getBoundingClientRect();
-
-      noX =
-        (areaRect.width / 2) + 120;
-
-      noY =
-        (areaRect.height / 2) -
-        (rect.height / 2);
-
-      noBtn.style.left = noX + "px";
-      noBtn.style.top = noY + "px";
-    }
-
-    posicionarBotaoInicial();
-
-    // acompanha mouse
     document.addEventListener("mousemove", (e) => {
 
       mouseX = e.clientX;
@@ -314,7 +408,6 @@
 
     });
 
-    // cursor fake
     function animateCursor(){
 
       fakeX += (mouseX - fakeX) * 0.25;
@@ -328,91 +421,215 @@
 
     animateCursor();
 
-    // botão NÃO fugindo
-    document.addEventListener("mousemove", () => {
+    function configurarBotaoFugitivo(idBotao){
 
-      const rect =
-        noBtn.getBoundingClientRect();
+      const botao =
+        document.getElementById(idBotao);
 
-      const centerX =
-        rect.left + rect.width / 2;
+      const area =
+        botao.parentElement;
 
-      const centerY =
-        rect.top + rect.height / 2;
+      const controle = {
 
-      const distance = Math.hypot(
-        mouseX - centerX,
-        mouseY - centerY
-      );
+        botao,
+        area,
+        scale:1,
+        jumpCount:0,
+        posX:0,
+        posY:0
 
-      // ativa fuga
-      if(distance < 170){
+      };
+
+      controle.resetarPosicao = function(){
+
+        const rect =
+          botao.getBoundingClientRect();
 
         const areaRect =
-          buttonsArea.getBoundingClientRect();
+          area.getBoundingClientRect();
 
-        // pequenos pulos
-        noX += (Math.random() - 0.5) * 180;
-        noY += (Math.random() - 0.5) * 120;
+        controle.posX =
+          (areaRect.width / 2) + 120;
 
-        // limites
-        const minX = 20;
-        const minY = 20;
+        controle.posY =
+          (areaRect.height / 2) -
+          (rect.height / 2);
 
-        const maxX =
-          areaRect.width - rect.width - 20;
+        botao.style.left =
+          controle.posX + "px";
 
-        const maxY =
-          areaRect.height - rect.height - 20;
+        botao.style.top =
+          controle.posY + "px";
 
-        // mantém dentro da área
-        noX =
-          Math.max(minX, Math.min(noX, maxX));
+        controle.scale = 1;
+        controle.jumpCount = 0;
 
-        noY =
-          Math.max(minY, Math.min(noY, maxY));
+        botao.style.transform =
+          "scale(1)";
+      };
 
-        // aplica posição
-        noBtn.style.left = noX + "px";
-        noBtn.style.top = noY + "px";
+      controle.resetarPosicao();
 
-        // conta pulos
-        jumpCount++;
+      botoesFugitivos.push(controle);
 
-        // diminui a cada 3 pulos
-        if(jumpCount % 3 === 0){
+      document.addEventListener("mousemove", () => {
 
-          noScale -= 0.04;
-
-          // limite mínimo
-          if(noScale < 0.35){
-            noScale = 0.35;
-          }
-
-          noBtn.style.transform =
-            `scale(${noScale})`;
+        if(
+          area.parentElement.style.display === "none"
+        ){
+          return;
         }
 
-      }
+        const rect =
+          botao.getBoundingClientRect();
 
-    });
+        const centerX =
+          rect.left + rect.width / 2;
 
-    // clique no SIM
-    yesBtn.addEventListener("click", () => {
+        const centerY =
+          rect.top + rect.height / 2;
 
-      document.getElementById(
-        "questionScreen"
-      ).style.display = "none";
+        const distance = Math.hypot(
+          mouseX - centerX,
+          mouseY - centerY
+        );
 
-      document.getElementById(
-        "successScreen"
-      ).style.display = "block";
+        if(distance < 170){
 
-      criarAnimacaoFinal();
+          const areaRect =
+            area.getBoundingClientRect();
 
-    });
+          controle.posX +=
+            (Math.random() - 0.5) * 180;
 
-    // animação final
+          controle.posY +=
+            (Math.random() - 0.5) * 120;
+
+          const minX = 20;
+          const minY = 20;
+
+          const maxX =
+            areaRect.width - rect.width - 20;
+
+          const maxY =
+            areaRect.height - rect.height - 20;
+
+          controle.posX =
+            Math.max(
+              minX,
+              Math.min(controle.posX, maxX)
+            );
+
+          controle.posY =
+            Math.max(
+              minY,
+              Math.min(controle.posY, maxY)
+            );
+
+          botao.style.left =
+            controle.posX + "px";
+
+          botao.style.top =
+            controle.posY + "px";
+
+          controle.jumpCount++;
+
+          if(controle.jumpCount % 3 === 0){
+
+            controle.scale -= 0.04;
+
+            if(controle.scale < 0.35){
+              controle.scale = 0.35;
+            }
+
+            botao.style.transform =
+              `scale(${controle.scale})`;
+          }
+
+        }
+
+      });
+
+    }
+
+    configurarBotaoFugitivo("noBtn");
+    configurarBotaoFugitivo("noBtn2");
+    configurarBotaoFugitivo("noBtn3");
+    configurarBotaoFugitivo("noBtn4");
+    configurarBotaoFugitivo("noBtn5");
+    configurarBotaoFugitivo("noBtn6");
+    configurarBotaoFugitivo("noBtn7");
+    configurarBotaoFugitivo("noBtn8");
+
+    function resetarTodosBotoes(){
+
+      botoesFugitivos.forEach(botao => {
+        botao.resetarPosicao();
+      });
+
+    }
+
+    function trocarTela(atual, proxima){
+
+      document.getElementById(atual)
+        .style.display = "none";
+
+      document.getElementById(proxima)
+        .style.display = "flex";
+
+      resetarTodosBotoes();
+    }
+
+    document.getElementById("yesBtn")
+      .addEventListener("click", () => {
+        trocarTela("questionScreen", "questionScreen2");
+      });
+
+    document.getElementById("yesBtn2")
+      .addEventListener("click", () => {
+        trocarTela("questionScreen2", "questionScreen3");
+      });
+
+    document.getElementById("yesBtn3")
+      .addEventListener("click", () => {
+        trocarTela("questionScreen3", "questionScreen4");
+      });
+
+    document.getElementById("yesBtn4")
+      .addEventListener("click", () => {
+        trocarTela("questionScreen4", "questionScreen5");
+      });
+
+    document.getElementById("yesBtn5")
+      .addEventListener("click", () => {
+        trocarTela("questionScreen5", "questionScreen6");
+      });
+
+    document.getElementById("yesBtn6")
+      .addEventListener("click", () => {
+        trocarTela("questionScreen6", "questionScreen7");
+      });
+
+    document.getElementById("yesBtn7")
+      .addEventListener("click", () => {
+        trocarTela("questionScreen7", "questionScreen8");
+      });
+
+    document.getElementById("yesBtn8")
+      .addEventListener("click", () => {
+
+        document.getElementById(
+          "questionScreen8"
+        ).style.display = "none";
+
+        document.getElementById(
+          "successScreen"
+        ).style.display = "block";
+
+        criarAnimacaoFinal();
+
+      });
+
     function criarAnimacaoFinal(){
 
       setInterval(() => {
@@ -422,7 +639,6 @@
 
         item.classList.add("happy");
 
-        // mistura balões + emojis
         const elementos = [
           "🎈",
           "🎈",
@@ -443,21 +659,17 @@
             )
           ];
 
-        // posição aleatória
         item.style.left =
           Math.random() * window.innerWidth + "px";
 
-        // tamanho aleatório
         item.style.fontSize =
           (35 + Math.random() * 55) + "px";
 
-        // velocidade aleatória
         item.style.animationDuration =
           (4 + Math.random() * 4) + "s";
 
         document.body.appendChild(item);
 
-        // remove depois
         setTimeout(() => {
           item.remove();
         }, 8000);
